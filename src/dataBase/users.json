@@ -1,0 +1,132 @@
+[
+ {
+  "id": 1,
+  "firstname": "Leif",
+  "lastname": "Pachta",
+  "birthdate": "1996-08-15",
+  "email": "lpachta0@hubpages.com",
+  "password": "0DSUlNT4G1",
+  "phonenumber": "5309101732",
+  "userTerms": "on",
+  "profileimg": [
+   "default-user.png"
+  ]
+ },
+ {
+  "id": 2,
+  "firstname": "Roanne",
+  "lastname": "Gwynn",
+  "birthdate": "2003-01-10",
+  "email": "rgwynn1@economist.com",
+  "password": "9Dz78nx4",
+  "phonenumber": "7586675592",
+  "userTerms": "on",
+  "profileimg": [
+   "avatar-woman.png"
+  ]
+ },
+ {
+  "id": 3,
+  "firstname": "Meghan",
+  "lastname": "Rudeyeard",
+  "birthdate": "1980-06-07",
+  "email": "mrudeyeard2@wix.com",
+  "password": "Iqkii1",
+  "phonenumber": "6178815963",
+  "userTerms": "on",
+  "profileimg": [
+   "default-user.png"
+  ]
+ },
+ {
+  "id": 4,
+  "firstname": "Osbourn",
+  "lastname": "Wichard",
+  "birthdate": "1980-08-20",
+  "email": "owichard3@github.com",
+  "password": "Dy3iyRxbYzf",
+  "phonenumber": "8767142344",
+  "userTerms": "on",
+  "profileimg": [
+   "default-user.png"
+  ]
+ },
+ {
+  "id": 5,
+  "firstname": "Antonino",
+  "lastname": "Elcomb",
+  "birthdate": "2001-08-21",
+  "email": "aelcomb4@altervista.org",
+  "password": "RJDfJ7",
+  "phonenumber": "4048683944",
+  "userTerms": "on",
+  "profileimg": [
+   "avatar-man.png"
+  ]
+ },
+ {
+  "id": 6,
+  "firstname": "Rory",
+  "lastname": "Lobb",
+  "birthdate": "1982-08-30",
+  "email": "rlobb5@pen.io",
+  "password": "lmnv4C",
+  "phonenumber": "6856028011",
+  "userTerms": "on",
+  "profileimg": [
+   "avatar-man.png"
+  ]
+ },
+ {
+  "id": 7,
+  "firstname": "Latrena",
+  "lastname": "Schout",
+  "birthdate": "1994-10-20",
+  "email": "lschout6@google.ru",
+  "password": "Sbxw3P",
+  "phonenumber": "6608809302",
+  "userTerms": "on",
+  "profileimg": [
+   "default-user.png"
+  ]
+ },
+ {
+  "id": 8,
+  "firstname": "Briano",
+  "lastname": "Leake",
+  "birthdate": "1982-10-13",
+  "email": "bleake7@washington.edu",
+  "password": "mGp0WiLQG5ui",
+  "phonenumber": "1388740385",
+  "userTerms": "on",
+  "profileimg": [
+   "avatar-man.png"
+  ]
+ },
+ {
+  "id": 9,
+  "firstname": "Latashia",
+  "lastname": "Birtle",
+  "birthdate": "1997-06-03",
+  "email": "lbirtle8@etsy.com",
+  "password": "oPCuDLCWIxA",
+  "phonenumber": "9816660743",
+  "userTerms": "on",
+  "profileimg": [
+   "avatar-woman.png"
+  ]
+ },
+ {
+  "id": 10,
+  "firstname": "Lilly",
+  "lastname": "Hansmann",
+  "birthdate": "2000-02-20",
+  "email": "lhansmann9@wufoo.com",
+  "password": "GUYkpBAjG9M5",
+  "phonenumber": "4754274536",
+  "userTerms": "on",
+  "profileimg": [
+   "avatar-woman.png"
+  ]
+ }
+]
