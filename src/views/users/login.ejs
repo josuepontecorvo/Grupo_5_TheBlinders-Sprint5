@@ -10,16 +10,20 @@
     <main>
         <section class="login-container">
             <h2 class="login-header">ACCEDER</h2>
-            <form class="login-form" method="GET" action="/">
+            <form class="login-form" method="POST" action="/usuarios/ingresar">
                 <div>
                     <label for="username">Usuario/mail:</label>
-                    <input type="text" name="username" placeholder="johndow@mail.com" id="username" minLength="4" required>
-                    <span class="feedback"></span>
+                    <input type="text" name="username" placeholder="johndow@mail.com" id="username" minLength="4" required value="<%= locals.oldData && oldData.username %>">
+                    <span class="feedback">
+                        <%= locals.errors && errors.username ? errors.username.msg : null %> 
+                    </span>
                 </div>
                 <div>
                     <label for="password">Contraseña:</label>
-                    <input type="password" name="password" placeholder="Password" id="password" minLength="8" required>
-                    <span class="feedback"></span> 
+                    <input type="password" name="password" id="password" minLength="8" required>
+                    <span class="feedback">
+                        <%= locals.errors && errors.password ? errors.password.msg : null %>
+                    </span> 
                 </div>
                 <button type="submit">Iniciar sesión<i class="fa-solid fa-lock-keyhole"></i> </button>
             </form>

@@ -74,40 +74,12 @@ const modelController = function (name) {
             this.writeFile(updatedRows);
         },
 
-        visited: function () {
-            let rows = this.readFile();
-            
-            const visitados = rows.filter(i => i.category == 'visited')
-            return visitados 
-
-        },
-
-        inSale: function () {
-            let rows = this.readFile();
-  
-            const enVenta = rows.filter(i => i.category == 'in-sale')
-            return enVenta
-
-        },
-
-        findFirstByField: function(text){
+        findByField: function(field, value){
             let rows = this.all();
     
-            let elementFound = rows.find(element => element.id == text);
+            let elementFound = rows.find(element => element[field] == value);
             return elementFound;
-        },
-
-        findAllByField: function(text){
-            let rows = this.all();
-            let allElementsFound = rows.filter(element => element.estado == text);
-            return allElementsFound;
-        }
-
-
-
-       
-
-
+        } 
 
     }
 }

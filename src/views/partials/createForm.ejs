@@ -64,47 +64,47 @@
     </diV>
     <diV class="form-control">
         <label class="input-label" for="size">Talle:</label>
-        <input type="text" name="size" id="size">
+        <input type="text" name="size" id="size" value="<%= locals.oldData && oldData.size %>">
         <span class="feedback"></span>
     </diV>
     <diV class="form-control">
         <label class="input-label" for="color">Color:</label>
-        <input type="text" name="color" id="color">
+        <input type="text" name="color" id="color" value="<%= locals.oldData && oldData.color %>" >
         <span class="feedback"></span>
     </diV>
     <div class="form-control">
         <label class="input-label" for="rolled">Rodado:</label>
-        <input type="number" name="rolled" id="rolled"/>
+        <input type="number" name="rolled" id="rolled" value="<%= locals.oldData && oldData.rolled %>"/>
         <span class="feedback"></span>
     </div>
     <diV class="form-control">
         <label class="input-label" for="frame">Estructura:</label>
-        <input type="text" name="frame" id="frame">
+        <input type="text" name="frame" id="frame" value="<%= locals.oldData && oldData.frame %>">
         <span class="feedback"></span>
     </diV>
     <diV class="form-control">
         <label class="input-label" for="shifter">Cambios:</label>
-        <input type="text" name="shifter" id="shifter">
+        <input type="text" name="shifter" id="shifter" value="<%= locals.oldData && oldData.shifter %>">
         <span class="feedback"></span>
     </diV>
     <diV class="form-control">
         <label class="input-label" for="brakes">Frenos:</label>
-        <input type="text" name="brakes" id="brakes">
+        <input type="text" name="brakes" id="brakes" value="<%= locals.oldData && oldData.brakes %>">
         <span class="feedback"></span>
     </diV>
     <diV class="form-control">
         <label class="input-label" for="suspension">Suspensión:</label>
-        <input type="text" name="suspension" id="suspension">
+        <input type="text" name="suspension" id="suspension" value="<%= locals.oldData && oldData.suspension %>">
         <span class="feedback"></span>
     </diV>
     <diV class="form-control">
         <label class="input-label" for="cubiertas">Cubiertas:</label>
-        <input type="text" name="cubiertas" id="cubiertas">
+        <input type="text" name="cubiertas" id="cubiertas" value="<%= locals.oldData && oldData.cubiertas %>">
         <span class="feedback"></span>
     </diV>
     <diV class="form-control">
         <label class="input-label" for="info">Info Adicional:</label>
-        <textarea name="info" id="info" cols="30" rows="10"></textarea>
+        <textarea name="info" id="info" cols="30" rows="10"><%= locals.oldData && oldData.info %></textarea>
         <span class="feedback"></span>
     </diV>
     <div class="submit-form">

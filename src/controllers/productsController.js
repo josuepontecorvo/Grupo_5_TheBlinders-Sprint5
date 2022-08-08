@@ -77,7 +77,7 @@ controller = {
             productModel.update(productUpdate);
             res.redirect('/productos');
         }else {
-            res.render('products/productEdit',{errors: errors.mapped(), oldData: req.body});
+            res.render('products/productEdit',{errors: errors.mapped(), oldData: req.body, idToUpdate });
         }
 
         

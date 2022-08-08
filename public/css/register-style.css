@@ -458,7 +458,7 @@ footer {
         display: flex;
         flex-direction: column;
         flex-wrap:wrap;
-        height: 620px;
+        height: 650px;
         justify-content: space-between;
     }
 
