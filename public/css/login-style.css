@@ -141,7 +141,7 @@ div.burger-menu .burger-options li {
     section.login-container {
         width: 98vw;
         max-width: 300px;
-        height: 450px;
+        height: 470px;
         margin: 0 auto;
         padding: 40px 20px;  
         background-color: rgba(80, 80, 80, 0.9);
@@ -170,6 +170,10 @@ div.burger-menu .burger-options li {
         margin-top: 5px;
         font-size: 13px;
         padding: 5px;
+    }
+
+    .login-form div label.rememberUser input {
+        width: auto;
     }
     
     .login-form button {

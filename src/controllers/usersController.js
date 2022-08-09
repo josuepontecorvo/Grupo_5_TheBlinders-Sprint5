@@ -14,8 +14,13 @@ controlador = {
 
     detail: (req,res) => { 
         const id = +req.params.id;
-        const user = userModel.find(id);    
-        res.render('users/userDetail', {user});
+        const user = userModel.find(id);
+        if(req.session.userLogged && user.email == req.session.userLogged.email) {
+            res.render('users/userDetail', {user});
+        } else {
+            res.redirect('/usuarios/ingresar');
+        }    
+        
     },
 
     register: (req,res) => res.render('users/register'),
@@ -24,15 +29,24 @@ controlador = {
         let user = req.body;
         let errors = validationResult(req);
         if (errors.isEmpty()) {
-            let imagenes= []
-            for(let i = 0 ; i<req.files.length;i++) {
-                imagenes.push(req.files[i].filename)
+            if (userModel.findByField('email', req.body.email)){
+                let errors = {
+                    email : {
+                        msg : 'Email existente'
+                    }
+                }
+                res.render('users/register',{errors , oldData: req.body});
+            } else {
+                let imagenes= []
+                for(let i = 0 ; i<req.files.length;i++) {
+                    imagenes.push(req.files[i].filename)
+                }
+                user.profileimg = imagenes.length > 0 ? imagenes : ['default-user.png'];
+                delete user["user-confirm-password"];
+                user.password = bcrypt.hashSync(user.password,10);
+                userModel.create(user);
+                res.redirect('/');
             }
-            user.profileimg = imagenes.length > 0 ? imagenes : ['default-user.png'];
-            delete user["user-confirm-password"];
-            user.password = bcrypt.hashSync(user.password,10);
-            userModel.create(user);
-            res.redirect('/');
         } else {
             res.render('users/register',{errors : errors.mapped(), oldData: req.body});
         };
@@ -47,14 +61,16 @@ controlador = {
         }
         let user = userModel.findByField('email', req.body.username);
         if (user && (bcrypt.compareSync(req.body.password, user.password))) {
+            delete user.password; 
+            req.session.userLogged = user;
             return res.redirect('/');
         } else {
             let errors = {
                 username : {
-                    msg: 'Credenciales invalidas'
+                    msg: 'Credenciales inválidas'
                 },
                 password : {
-                    msg: 'Credenciales invalidas'
+                    msg: 'Credenciales inválidas'
                 }
             }
             return res.render('users/login',{errors , oldData : req.body});
@@ -116,6 +132,11 @@ controlador = {
         }
         userModel.delete(idToDelete);
         res.redirect('/');
+    },
+
+    logout: (req,res) => {
+        req.session.destroy();
+        res.redirect('/usuarios/ingresar');
     },
 
 };

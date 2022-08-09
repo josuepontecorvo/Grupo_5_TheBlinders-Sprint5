@@ -21,7 +21,7 @@ const modelController = function (name) {
             let rows = this.readFile();
             let lastRow = rows.pop();
 
-            return lastRow.id ? ++lastRow.id : 1;
+            return lastRow ? ++lastRow.id : 1;
         },
         // Leo todos los registros del archivo
         all: function () {

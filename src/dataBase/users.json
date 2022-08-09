@@ -128,5 +128,18 @@
   "profileimg": [
    "avatar-woman.png"
   ]
+ },
+ {
+  "firstname": "Josue",
+  "lastname": "Pontecorvo",
+  "birthdate": "1990-02-01",
+  "email": "josuepontecorvo@gmail.com",
+  "password": "$2a$10$.cuh0.8fmihboRLuU9EkkOhyRMG8tXNa3tilz8Uf8of0mFBeaEzU.",
+  "phonenumber": "",
+  "userTerms": "on",
+  "profileimg": [
+   "user-img-1660015653367.jpg"
+  ],
+  "id": 11
  }
 ]

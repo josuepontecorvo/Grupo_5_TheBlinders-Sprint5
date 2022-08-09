@@ -25,6 +25,12 @@
                         <%= locals.errors && errors.password ? errors.password.msg : null %>
                     </span> 
                 </div>
+                <div>
+                    <label for="rememberUser" class="rememberUser">
+                        <input type="checkbox" name="rememberUser" id="rememberUser">
+                        Recordarme
+                    </label>
+                </div>
                 <button type="submit">Iniciar sesión<i class="fa-solid fa-lock-keyhole"></i> </button>
             </form>
             <h3><a href="#">Olvide mi contraseña</a></h3>

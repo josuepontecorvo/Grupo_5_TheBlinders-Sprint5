@@ -5,15 +5,18 @@ const multerMiddleware = require('../middleware/multer');
 const userRegisterValidation = require('../middleware/userRegisterValidation');
 const userEditValidation = require('../middleware/userEditValidation');
 const userLoginValidation = require('../middleware/userLoginValidation');
+const guestMiddleware = require('../middleware/guestMiddleware');
+const authtMiddleware = require('../middleware/authMiddleware');
 const uploadFile = multerMiddleware('images/users',"user");
 
 
-router.get('/', usersController.list);
+router.get('/', authtMiddleware , usersController.list);
 router.get('/detalle/:id', usersController.detail);
-router.get('/registro', usersController.register);
+router.get('/registro', guestMiddleware , usersController.register);
 router.post('/registro', uploadFile.array('profileimg'), userRegisterValidation, usersController.store);
-router.get('/ingresar', usersController.login);
-router.post('/ingresar', userLoginValidation ,usersController.loginProcess);
+router.get('/ingresar', guestMiddleware , usersController.login);
+router.get('/logout' , usersController.logout);
+router.post('/ingresar', userLoginValidation , usersController.loginProcess);
 router.get('/carrito', usersController.cart);
 router.get('/editar/:id', usersController.edit);
 router.put('/editar/:id',uploadFile.array('profileimg'),  userEditValidation ,usersController.update);
