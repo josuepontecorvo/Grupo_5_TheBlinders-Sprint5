@@ -6,11 +6,11 @@ const userRegisterValidation = require('../middleware/userRegisterValidation');
 const userEditValidation = require('../middleware/userEditValidation');
 const userLoginValidation = require('../middleware/userLoginValidation');
 const guestMiddleware = require('../middleware/guestMiddleware');
-const authtMiddleware = require('../middleware/authMiddleware');
+const authMiddleware = require('../middleware/authMiddleware');
 const uploadFile = multerMiddleware('images/users',"user");
 
 
-router.get('/', authtMiddleware , usersController.list);
+router.get('/', authMiddleware , usersController.list);
 router.get('/detalle/:id', usersController.detail);
 router.get('/registro', guestMiddleware , usersController.register);
 router.post('/registro', uploadFile.array('profileimg'), userRegisterValidation, usersController.store);

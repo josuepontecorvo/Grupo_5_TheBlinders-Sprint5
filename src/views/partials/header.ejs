@@ -11,17 +11,28 @@
         </figure>
         <nav class="top-navbar">
             <ul>
-                <li><a href="/usuarios/registro">Crear Cuenta</a></li>
-                <li><a href="/usuarios/ingresar">Iniciar Sesión</a></li>
+                <% if (locals.isLogged) { %>
+                    <li><a href="/usuarios/detalle/<%= isLogged.id %>">Mi perfil</a></li>
+                    <li><a href="/usuarios/logout">Cerrar Sesión</a></li>
+                <% } else { %>
+                    <li><a href="/usuarios/registro">Crear Cuenta</a></li>
+                    <li><a href="/usuarios/ingresar">Iniciar Sesión</a></li>
+                <% } %>
                 <li><a href="/usuarios/carrito"><i class="fa-solid fa-cart-shopping"></i></a></li>
             </ul>
         </nav>
-        <div class="sign-in">
-            <a href="/usuarios/ingresar">
-                <i class="fa-solid fa-circle-user"></i>
-            </a>
+        <div class="sign-in" id="perfil">
+            <% if (locals.isLogged) { %>
+                <a href="/usuarios/detalle/<%= isLogged.id %>">
+                    <img src="/images/users/<%= isLogged.profileimg %> " alt="Imagen de usuario" style="border-radius: 100%; width: 30px; vertical-align:middle;">
+                </a>
+            <% } else { %>
+                <a href="/usuarios/ingresar">
+                    <i class="fa-solid fa-circle-user" style="vertical-align:middle;"></i>
+                </a>
+            <% } %>
             <a href="/usuarios/carrito">
-                <i class="fa-solid fa-cart-shopping"></i>
+                <i class="fa-solid fa-cart-shopping" style="vertical-align:middle;"></i>
             </a>
         </div>
     </div>
@@ -33,7 +44,9 @@
                 <li><a href="/nosotros">QUIENES SOMOS</a></li>
                 <li><a href="/contacto">CONTACTO</a></li>
                 <li><a href="/ayuda">AYUDA</a></li>
-                <li><a href="/productos/create">ADMIN</a></li>
+                <% if (locals.isLogged && isLogged.admin) { %>
+                    <li><a href="/productos/create">ADMIN</a></li>
+                <% } %>
             </ul>
         </nav>
     </div>
@@ -47,10 +60,17 @@
                 <li><a href="/nosotros">Quienes somos</a></li>
                 <li><a href="/contacto">Contacto</a></li>
                 <li><a href="/ayuda">Ayuda</a></li>
-                <li><a href="/usuarios/registro">Crear Cuenta</a></li>
-                <li><a href="/usuarios/ingresar">Iniciar Sesión</a></li>
+                <% if (locals.isLogged) { %>
+                    <li><a href="/usuarios/detalle/<%= isLogged.id %>">Mi perfil</a></li>
+                    <li><a href="/usuarios/logout">Cerrar Sesión</a></li>
+                <% } else { %>
+                    <li><a href="/usuarios/registro">Crear Cuenta</a></li>
+                    <li><a href="/usuarios/ingresar">Iniciar Sesión</a></li>
+                <% } %>
                 <li><a href="/usuarios/carrito">Carrito<i class="fa-solid fa-cart-shopping"></i></a></li>
-                <li><a href="/productos/create">ADMIN</a></li>
+                <% if (locals.isLogged && isLogged.admin) { %>
+                    <li><a href="/productos/create">ADMIN</a></li>
+                <% } %>
             </ul>
         </nav>
     </div>

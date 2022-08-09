@@ -5,13 +5,14 @@ const multerMiddleware = require('../middleware/multer')
 const uploadFile = multerMiddleware('images','product');
 const productCreateValidation = require('../middleware/productCreateValidation');
 const productEditValidation = require('../middleware/productEditValidation');
+const authMiddleware = require('../middleware/authMiddleware');
 
 
 router.get('/', productsController.products);
 router.get('/filtrar', productsController.filter);
 router.get('/detalle/:id', productsController.detail);
 router.get('/editar/:id', productsController.edit);
-router.get('/create', productsController.create);
+router.get('/create', authMiddleware , productsController.create);
 router.post('/create',uploadFile.array('image'), productCreateValidation,  productsController.store);
 router.delete('/:id', productsController.delete);
 router.put('/:id',uploadFile.array('image'),productEditValidation , productsController.update);
