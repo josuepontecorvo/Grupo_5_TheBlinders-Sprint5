@@ -12,7 +12,18 @@
         <nav class="top-navbar">
             <ul>
                 <% if (locals.isLogged) { %>
-                    <li><a href="/usuarios/detalle/<%= isLogged.id %>">Mi perfil</a></li>
+                    <li>
+                        
+                        <a href="/usuarios/detalle/<%= isLogged.id %>">
+                        
+                            <img src="/images/users/<%= isLogged.profileimg %> " 
+                            alt="Imagen de usuario" 
+                            style="border-radius: 100%; width: 30px; vertical-align:top; margin-right: 10px; position: relative; top: -3px">
+
+                            <%= isLogged.firstname %>
+
+                        </a>
+                    </li>
                     <li><a href="/usuarios/logout">Cerrar Sesión</a></li>
                 <% } else { %>
                     <li><a href="/usuarios/registro">Crear Cuenta</a></li>
@@ -25,6 +36,9 @@
             <% if (locals.isLogged) { %>
                 <a href="/usuarios/detalle/<%= isLogged.id %>">
                     <img src="/images/users/<%= isLogged.profileimg %> " alt="Imagen de usuario" style="border-radius: 100%; width: 30px; vertical-align:middle;">
+                </a>
+                <a class="logout" href="/usuarios/logout">
+                    Cerrar sesion
                 </a>
             <% } else { %>
                 <a href="/usuarios/ingresar">
