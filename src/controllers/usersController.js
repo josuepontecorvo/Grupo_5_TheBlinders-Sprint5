@@ -84,7 +84,7 @@ controlador = {
             delete user.password; 
             req.session.userLogged = user;
             if(req.body.rememberUser) {
-                res.cookie('userEmail', req.body.username, { maxAge: 1000 * 60 * 2 });
+                res.cookie('userEmail', req.body.username, { maxAge: 1000 * 60 * 60 });
             }
             
             return res.redirect('/');
@@ -192,6 +192,7 @@ controlador = {
     },
 
     logout: (req,res) => {
+        res.clearCookie('userEmail')
         req.session.destroy();
         res.redirect('/usuarios/ingresar');
     },
