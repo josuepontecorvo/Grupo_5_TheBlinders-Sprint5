@@ -35,9 +35,9 @@
         <div class="sign-in" id="perfil">
             <% if (locals.isLogged) { %>
                 <a href="/usuarios/detalle/<%= isLogged.id %>">
-                    <img src="/images/users/<%= isLogged.profileimg %> " alt="Imagen de usuario" style="border-radius: 100%; width: 30px; vertical-align:middle;">
+                    <img src="/images/users/<%= isLogged.profileimg %> " alt="Imagen de usuario" style="border-radius: 100%; width: 30px; vertical-align:middle;box-shadow: 0 0 5px #fff;">
                 </a>
-                <a class="logout" href="/usuarios/logout">
+                <a class="logout" href="/usuarios/logout" style="font-size: 14px;text-shadow: none;">
                     Cerrar sesion
                 </a>
             <% } else { %>
