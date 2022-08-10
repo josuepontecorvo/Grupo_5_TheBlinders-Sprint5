@@ -83,6 +83,10 @@ controlador = {
         if (user && (bcrypt.compareSync(req.body.password, user.password))) {
             delete user.password; 
             req.session.userLogged = user;
+            if(req.body.rememberUser) {
+                res.cookie('userEmail', req.body.username, { maxAge: 1000 * 60 * 2 });
+            }
+            
             return res.redirect('/');
         } else {
             let errors = {
