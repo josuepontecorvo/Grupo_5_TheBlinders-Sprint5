@@ -376,23 +376,26 @@ footer {
         order: 2;
         text-align: center;
         font-size: 25px;
-        margin-right: 15px;
         text-shadow: 0 0 5px #fff;
     }
 
     .sign-in a {
-        color: #fa4500;  
+        color: #fa4500;
         margin-right:10px; 
-        text-decoration: none; 
+        text-decoration: none;   
+    }
+
+    .sign-in a.logout {
+        font-size: 12px;
     }
 
     .search-bar {
-        width:50%;
-        text-align: right;
+        width:38%;
+        text-align: center;
     }
 
     .search-bar input {
-        width: 80%
+        width: 85%
     }
 
     div.burger-menu {
