@@ -8,13 +8,19 @@ const userModel = jsonDB('users');
 
 controlador = {
     list: (req,res) =>{ 
-        let users = userModel.readFile();     
+        let users = userModel.readFile();
+        users = users.map(user => {
+            delete user.password;
+            return user;
+        })   
         res.render('users/user-index',{users});
     },
 
     detail: (req,res) => { 
         const id = +req.params.id;
         const user = userModel.find(id);
+        delete user.password;
+
         if(req.session.userLogged && user.email == req.session.userLogged.email) {
             res.render('users/userDetail', {user});
         } else {
@@ -30,11 +36,18 @@ controlador = {
         let errors = validationResult(req);
         if (errors.isEmpty()) {
             if (userModel.findByField('email', req.body.email)){
+                if (req.files) {
+                    let {files} = req;
+                for (let i = 0 ; i< files.length; i++) {
+                    fs.unlinkSync(path.resolve(__dirname, '../../public/images/users/'+files[i].filename))
+                }
+                };
                 let errors = {
                     email : {
                         msg : 'Email existente'
                     }
                 }
+                delete req.body.password;
                 res.render('users/register',{errors , oldData: req.body});
             } else {
                 let imagenes= []
@@ -48,6 +61,13 @@ controlador = {
                 res.redirect('/');
             }
         } else {
+            if (req.files) {
+                let {files} = req;
+            for (let i = 0 ; i< files.length; i++) {
+                fs.unlinkSync(path.resolve(__dirname, '../../public/images/users/'+files[i].filename))
+            }
+            };
+            delete req.body.password;
             res.render('users/register',{errors : errors.mapped(), oldData: req.body});
         };
     },
@@ -73,6 +93,7 @@ controlador = {
                     msg: 'Credenciales inválidas'
                 }
             }
+            delete req.body.password;
             return res.render('users/login',{errors , oldData : req.body});
         };
     },
@@ -90,12 +111,36 @@ controlador = {
         const user = userModel.find(idToUpdate);   
         let errors = validationResult(req);
         if (errors.isEmpty()) {
+            if (user.email !== req.body.email && userModel.findByField('email', req.body.email)) {
+                if (req.files) {
+                    let {files} = req;
+                for (let i = 0 ; i< files.length; i++) {
+                    fs.unlinkSync(path.resolve(__dirname, '../../public/images/users/'+files[i].filename))
+                }
+                };
+                let errors = {
+                    email : {
+                        msg : 'Email existente'
+                    }
+                }
+                delete req.body.password;
+                return res.render('users/userEdit',{errors , oldData: req.body, idToUpdate, user});
+            }
+
             let dataUpdate = req.body;
             let imagenes= []
             for(let i = 0 ; i<req.files.length;i++) {
                 imagenes.push(req.files[i].filename)
             }
             dataUpdate.profileimg = imagenes.length > 0 ? imagenes : user.profileimg;
+
+            if (imagenes.length > 0 && user.profileimg) {
+                let files = user.profileimg;
+                files = files.filter(image => image != 'default-user.png')
+            for (let i = 0 ; i< files.length; i++) {
+                fs.unlinkSync(path.resolve(__dirname, '../../public/images/users/'+files[i]));
+            }
+            };
 
             if(dataUpdate.password != "") {
                     delete dataUpdate["user-confirm-password"];
@@ -105,7 +150,7 @@ controlador = {
                     }
                     userUpdate.password = bcrypt.hashSync(userUpdate.password,10);
                     userModel.update(userUpdate);
-                    res.redirect('/usuarios');
+                    res.redirect('/');
             } else {
                 delete dataUpdate["user-confirm-password"];
                 dataUpdate.password = user.password;
@@ -114,9 +159,17 @@ controlador = {
                     ...dataUpdate,
                 }
                 userModel.update(userUpdate);
-                res.redirect('/usuarios');
+                res.redirect('/');
             }
-        }else {
+        } else {
+            if (req.files) {
+                let {files} = req;
+            for (let i = 0 ; i< files.length; i++) {
+                fs.unlinkSync(path.resolve(__dirname, '../../public/images/users/'+files[i].filename))
+            }
+            };
+            delete req.body.password;
+            delete user.password;
             res.render('users/userEdit',{errors: errors.mapped(), oldData : req.body, idToUpdate, user});
         }
 

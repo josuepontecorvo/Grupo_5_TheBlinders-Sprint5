@@ -35,6 +35,12 @@ controller = {
             productModel.create(product);
             res.redirect('/productos')
         }else {
+            if (req.files) {
+                let {files} = req;
+            for (let i = 0 ; i< files.length; i++) {
+                fs.unlinkSync(path.resolve(__dirname, '../../public/images/'+files[i].filename))
+            }
+            };
             res.render('products/productCreate',{errors: errors.mapped(), oldData: req.body});
         }
 
@@ -50,8 +56,13 @@ controller = {
     delete: (req,res) => {
         let idToDelete = req.params.id;
         let product = productModel.find(idToDelete);
-        let pathToImage = path.join(__dirname, '../../public/images/'+ product.image[0]);
-        fs.unlinkSync( pathToImage );
+        if (product.image) {
+            let files = product.image;
+            files = files.filter(image => image != 'default-product-image.png');
+        for (let i = 0 ; i< files.length; i++) {
+            fs.unlinkSync(path.resolve(__dirname, '../../public/images/'+files[i]))
+        }
+        };
         productModel.delete(idToDelete);
         res.redirect('/productos');
     },
@@ -70,6 +81,15 @@ controller = {
                 imagenes.push(req.files[i].filename)
             }
             dataUpdate.image =imagenes.length > 0 ? imagenes : product.image;
+
+            if (imagenes.length > 0 && product.image) {
+                let files = product.image;
+                files = files.filter(image => image != 'default-product-image.png')
+            for (let i = 0 ; i< files.length; i++) {
+                fs.unlinkSync(path.resolve(__dirname, '../../public/images/'+files[i]));
+            }
+            };
+
             let productUpdate = {
                 id: idToUpdate,
                 ...dataUpdate,
@@ -77,6 +97,12 @@ controller = {
             productModel.update(productUpdate);
             res.redirect('/productos');
         }else {
+            if (req.files) {
+                let {files} = req;
+            for (let i = 0 ; i< files.length; i++) {
+                fs.unlinkSync(path.resolve(__dirname, '../../public/images/'+files[i].filename))
+            }
+            };
             res.render('products/productEdit',{errors: errors.mapped(), oldData: req.body, idToUpdate });
         }
 

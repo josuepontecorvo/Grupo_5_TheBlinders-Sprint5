@@ -144,16 +144,15 @@
   "id": 11
  },
  {
+  "id": "12",
   "firstname": "Admin",
   "lastname": "Admin",
-  "birthdate": "2000-01-01",
+  "birthdate": "2010-01-01",
   "email": "admin@mail.com",
-  "password": "$2a$10$X6LvaMg0gNDxkRb/2QwbG.fs8nL.6dw/Ah2aQ80NC.RjCEKe77HT6",
+  "password": "$2a$10$cfOb5YfUJiXXj2ue3na2JOACe0sZ.iSJqryYFA8i5RTrrB8MbFXhm",
   "phonenumber": "",
-  "userTerms": "on",
   "profileimg": [
-   "user-img-1660064803553.jpg"
-  ],
-  "id": 12
+   "user-img-1660144856873.jpg"
+  ]
  }
 ]
