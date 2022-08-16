@@ -39,7 +39,7 @@
                 </diV>
                 <div class="form-control">
                     <label class="input-label" for="product-image">Carga la foto del producto</label>
-                    <input class="file" type="file" name="image" id="product-image"  accept=".jpg, .png, .jpeg" value="<%= locals.product && product.image %>"/>
+                    <input class="file" type="file" name="image" id="product-image"  accept=".jpg, .png, .jpeg" multiple value="<%= locals.product && product.image %>"/>
                     <span class="feedback">
                         <%= locals.errors && errors.image ? errors.image.msg : null %> 
                     </span>

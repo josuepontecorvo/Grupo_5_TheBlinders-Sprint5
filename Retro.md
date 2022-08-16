@@ -27,5 +27,5 @@ Luego de realizar la retrospectiva de la etapa finalizada, utilizando el método
 
 
 Corolario Sprint 4:
-    Sigue sin ser un problema cumplir con la consigna antes de la fecha limite. El uso de las pull request es cada vez mas fluido, lo cual suma a la experciencia de         trabajo en equipo y nos ayuda a profundizar en la implementacion de herramientas profesionales como git y github. 
+    Sigue sin ser un problema cumplir con la consigna antes de la fecha limite. El uso de las pull request es cada vez mas fluido, lo cual suma a la experciencia de trabajo en equipo y nos ayuda a profundizar en la implementacion de herramientas profesionales como git y github. 
 
