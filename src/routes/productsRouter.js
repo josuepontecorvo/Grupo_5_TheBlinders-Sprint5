@@ -11,6 +11,7 @@ const adminMiddleware = require('../middleware/adminMiddleware');
 
 router.get('/', productsController.products);
 router.get('/filtrar', productsController.filter);
+router.get('/buscar', productsController.search);
 router.get('/detalle/:id', productsController.detail);
 router.get('/editar/:id', productsController.edit);
 router.get('/create',adminMiddleware , productsController.create);

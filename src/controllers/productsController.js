@@ -115,6 +115,12 @@ controller = {
         res.render('products/products', {products,toThousand,filtro})
     },
 
+    search: (req,res) => {
+        let busqueda = req.query.search;
+        const products = productModel.readFile();
+        res.render('products/products', {products,toThousand,busqueda})
+    },
+
 };
 
 module.exports = controller;
