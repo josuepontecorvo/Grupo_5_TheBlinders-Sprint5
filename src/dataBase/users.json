@@ -137,7 +137,6 @@
   "password": "$2a$10$.cuh0.8fmihboRLuU9EkkOhyRMG8tXNa3tilz8Uf8of0mFBeaEzU.",
   "phonenumber": "",
   "userTerms": "on",
-  "admin": "true",
   "profileimg": [
    "userGrupo5.jpg"
   ],
@@ -151,6 +150,7 @@
   "email": "admin@mail.com",
   "password": "$2a$10$cfOb5YfUJiXXj2ue3na2JOACe0sZ.iSJqryYFA8i5RTrrB8MbFXhm",
   "phonenumber": "",
+  "admin": "true",
   "profileimg": [
    "user-img-1660144856873.jpg"
   ]
